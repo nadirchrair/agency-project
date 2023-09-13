@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block namepage %}
+offre
+{% endblock namepage %}
+{% block section %}
+
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title">DataTable offre</h3>
+    </div>
+    <!-- /.card-header -->
+    <div class="card-body">
+        <table id="example1" class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>id</th>
+                    <th>username</th>
+                    <th>category</th>
+                    <th> name_offre</th>
+                    <th>descreption </th>
+                    <th>dureé</th>
+                    <th>price</th>
+                    <th>complete</th>
+                    <th>photo</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                {% for offr in offre %}
+
+                <tr>
+                    <td>{{offr.id}}</td>
+                    <td>{{offr.username}}</td>
+                    <td>{{offr.category}}</td>
+                    <td>{{offr.name_offre}}</td>
+                    <td>{{offr.descreption}}</td>
+                    <td>{{offr.dureé}}</td>
+                    <td>{{offr.price}}</td>
+                    <td>{{offr.complete}}</td>
+
+                </tr>
+                {% endfor %}
+
+            </tbody>
+        </table>
+    </div>
+    <!-- /.card-body -->
+</div>
+
+{% endblock section %}
+{% block scriptsjs %}
+<!-- jQuery -->
+<script src="{% static '../../plugins/jquery/jquery.min.js' %}"></script>
+<!-- Bootstrap 4 -->
+<script src="{% static '../../plugins/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+<!-- DataTables -->
+<script src="{% static '../../plugins/datatables/jquery.dataTables.js' %}"></script>
+<script src="{% static '../../plugins/datatables-bs4/js/dataTables.bootstrap4.js' %}"></script>
+<!-- AdminLTE App -->
+<script src="{% static '../../dist/js/adminlte.min.js' %}"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="{% static '../../dist/js/demo.js' %}"></script>
+<!-- page script -->
+<script>
+    $(function () {
+        $("#example1").DataTable();
+        $('#example2').DataTable({
+            "paging": true,
+            "lengthChange": false,
+            "searching": false,
+            "ordering": true,
+            "info": true,
+            "autoWidth": false,
+        });
+    });
+</script>
+{% endblock scriptsjs %}
