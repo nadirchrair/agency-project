@@ -2,49 +2,21 @@
 {% load static %}
 
 {% block namepage %}
-offre
+Ajouter offre
 {% endblock namepage %}
 {% block section %}
 
 <div class="card">
     <div class="card-header">
-        <h3 class="card-title">DataTable offre</h3>
+        <h3 class="card-title">Ajouter offre</h3>
     </div>
     <!-- /.card-header -->
     <div class="card-body">
-        <table id="example1" class="table table-bordered table-striped">
-            <thead>
-                <tr>
-                    <th>id</th>
-                    <th>username</th>
-                    <th>category</th>
-                    <th> name_offre</th>
-                    <th>descreption </th>
-                    <th>dureé</th>
-                    <th>price</th>
-                    <th>complete</th>
-                    <th>photo</th>
-
-                </tr>
-            </thead>
-            <tbody>
-                {% for offr in offre %}
-
-                <tr>
-                    <td>{{offr.id}}</td>
-                    <td>{{offr.username}}</td>
-                    <td>{{offr.category}}</td>
-                    <td>{{offr.name_offre}}</td>
-                    <td>{{offr.descreption}}</td>
-                    <td>{{offr.dureé}}</td>
-                    <td>{{offr.price}}</td>
-                    <td>{{offr.complete}}</td>
-
-                </tr>
-                {% endfor %}
-
-            </tbody>
-        </table>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Submit</button>
+        </form>
     </div>
     <!-- /.card-body -->
 </div>
